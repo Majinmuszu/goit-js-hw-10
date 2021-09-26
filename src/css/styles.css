@@ -49,3 +49,6 @@ span {
   width: 50px; 
   height: 40px;
 }
+.title {
+  font-size: medium;
+}

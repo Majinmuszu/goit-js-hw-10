@@ -16,7 +16,10 @@ const countryList = qs('.country-list');
 
 //idk why, but they want it on variable soo there it is
 const DEBOUNCE_DELAY = 300;
-
+//function for better population formatting
+function formatNumber(num) {
+  return num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')
+}
 //small fuction for reseting list of countries, just to make code
 //easier to read
 const resetCountries = () => {
@@ -69,7 +72,7 @@ const renderCountries = countries => {
     const markup = countries.map(({ flags, name, capital, population, languages }) => {
       return `<h2 class="country-info_name"><img src="${flags[0]}" width="80" class="big-img"/>${name}</h2>
         <p class="country-info_item"><span>Capital:</span> ${capital} </p>
-        <p class="country-info_item"><span>Population:</span> ${population} </p>
+        <p class="country-info_item"><span>Population:</span> ${formatNumber(population)} </p>
         <p class="country-info_item"><span>Languages:</span> ${languages[0].name}</p>
         `;
     });
@@ -78,4 +81,5 @@ const renderCountries = countries => {
   }
 };
 
+//Event on input
 input.addEventListener('input', debounce(inputValueProcessing, DEBOUNCE_DELAY));
