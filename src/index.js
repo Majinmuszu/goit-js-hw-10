@@ -51,13 +51,13 @@ const renderCountries = countries => {
   } else if (countries.length <= 10 && countries.length >= 2) {
     resetCountries();
 
-    countries.map(({ flags, name }) => {
+    countries.map(({ flag, name }) => {
       const item = cre('li');
       item.classList.add('country-list_item');
       countryList.append(item);
 
       const miniFlag = cre('img');
-      miniFlag.src = flags[0];
+      miniFlag.src = flag;
       miniFlag.classList.add('mini-img');
       item.append(miniFlag);
 
@@ -69,8 +69,8 @@ const renderCountries = countries => {
   } else if ((countries.length = 1)) {
     resetCountries();
 
-    const markup = countries.map(({ flags, name, capital, population, languages }) => {
-      return `<h2 class="country-info_name"><img src="${flags[0]}" width="80" class="big-img"/>${name}</h2>
+    const markup = countries.map(({ flag, name, capital, population, languages }) => {
+      return `<h2 class="country-info_name"><img src="${flag}" width="80" class="big-img"/>${name}</h2>
         <p class="country-info_item"><span>Capital:</span> ${capital} </p>
         <p class="country-info_item"><span>Population:</span> ${formatNumber(population)} </p>
         <p class="country-info_item"><span>Languages:</span> ${languages[0].name}</p>
